@@ -5,11 +5,11 @@
 // "http://localhost:8888/comem-archidep-php-todo-exercise/", then BASE_URL
 // should be "/comem-archidep-php-todo-exercise/". If you are accessing the
 // application at "http://localhost:8888", then BASE_URL should be "/".
-define('BASE_URL', '/');
+define('BASE_URL', 'http://localhost/archi_dep/');
 
 // Database connection parameters.
-define('DB_USER', 'todolist');
-define('DB_PASS', 'chAngeMeN0w!');
+define('DB_USER', 'root');
+define('DB_PASS', 'root');
 define('DB_NAME', 'todolist');
 define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
@@ -44,7 +44,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if (is_numeric($id)) {
-        $updateQuery = ''; // IMPLEMENT ME
+        $updateQuery = 'UPDATE todo SET done = NOT done WHERE id = ' . $id;
         if (!$db->query($updateQuery)) {
           die(print_r($db->errorInfo(), true));
         }
@@ -60,7 +60,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if (is_numeric($id)) {
-        $deleteQuery = ''; // IMPLEMENT ME
+        $deleteQuery = 'DELETE FROM todo WHERE id = ' . $id;
         if (!$db->query($deleteQuery)) {
           die(print_r($db->errorInfo(), true));
         }
